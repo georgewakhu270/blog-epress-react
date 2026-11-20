@@ -1,12 +1,12 @@
-import "@blocknote/core/fonts/inter.css";
-import { BlockNoteView } from "@blocknote/mantine";
-import "@blocknote/mantine/style.css";
-import { useCreateBlockNote } from "@blocknote/react";
 import { useState } from "react";
 import  DOMPurify  from "dompurify"
+import New from "./component/New";
 export default function App() {
-  const editor = useCreateBlockNote()
-  const [txt, settxt] = useState("")
+  // const editor = useCreateBlockNote()
+  // const [txt, settxt] = useState("")
+  const user = {
+    
+  }
   async function handleChange() {
     // const markdown = await editor.blocksToMarkdownLossy(editor.document);
     // settxt(markdown);
@@ -15,14 +15,18 @@ export default function App() {
   }
   return (
     <>
-    <div><h1>Hello</h1>
+      <div className="">
+        {/* <New /> */}
+      </div>
+    {/* <div><h1>Hello</h1>
 
 <div>
-  <BlockNoteView editor={editor} onChange={handleChange}/>
+  <BlockNoteView editor={editor} onChange={handleChange}/> */}
   {/* <pre>{txt}</pre> */}
-  <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(txt) }} />
-</div>
+  {/* <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(txt) }} /> */}
+{/* </div>
 
-    </div></>
+    </div> */}
+    </>
   )
 }

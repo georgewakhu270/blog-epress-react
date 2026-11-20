@@ -5,7 +5,8 @@ export default function App() {
   // const editor = useCreateBlockNote()
   // const [txt, settxt] = useState("")
   
-  const [log, setLog] = useState(false)
+  const [log, setLog] = useState(true)
+  const [sign, setSign] = useState(false)
 
   const user = {
     id: 1,
@@ -24,7 +25,14 @@ export default function App() {
   return (
     <>
       <div className="">
-        {log ? <div className=""> <Dashboard/> </div> : <div className=""></div>}
+        {log 
+          ? 
+            <div className=""> <Dashboard/> </div> 
+          : 
+            <div className="">
+
+            </div>
+        }
       </div>
     {/* <div><h1>Hello</h1>
 

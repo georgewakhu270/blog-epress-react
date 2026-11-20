@@ -7,6 +7,9 @@ export default function App() {
   const [log, setLog] = useState(true)
   const [sign, setSign] = useState(false)
 
+  const [blogs, setBlogs] = useState([])
+  const [tags, setTags] = useState([])
+
   const user = {
     id: 1,
     name: 'Admin',
@@ -27,7 +30,7 @@ export default function App() {
         {log 
           ? 
             <div className=""> 
-              <Dashboard/> 
+              <Dashboard setBlogs={setBlogs} blogs={blogs}/> 
             </div> 
           : 
             <div className="">

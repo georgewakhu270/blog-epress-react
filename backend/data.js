@@ -25,6 +25,7 @@ db.exec(`
   id           INTEGER PRIMARY KEY AUTOINCREMENT,
   author_id    INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
   title        TEXT NOT NULL,
+  category TEXT NOT NULL,
   slug         TEXT NOT NULL UNIQUE,    
   excerpt      TEXT,
   body         TEXT NOT NULL,           

@@ -1,10 +1,9 @@
 import { useState } from "react";
 import  DOMPurify  from "dompurify"
+import Dashboard from "./Dashboard";
 
 export default function App() {
-  // const editor = useCreateBlockNote()
-  // const [txt, settxt] = useState("")
-  
+    
   const [log, setLog] = useState(true)
   const [sign, setSign] = useState(false)
 
@@ -27,7 +26,9 @@ export default function App() {
       <div className="">
         {log 
           ? 
-            <div className=""> <Dashboard/> </div> 
+            <div className=""> 
+              <Dashboard/> 
+            </div> 
           : 
             <div className="">
 

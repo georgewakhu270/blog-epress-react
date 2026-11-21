@@ -2,20 +2,26 @@ import "@blocknote/core/fonts/inter.css";
 import { BlockNoteView } from "@blocknote/mantine";
 import "@blocknote/mantine/style.css";
 import { useCreateBlockNote } from "@blocknote/react";
+
 import { useState } from "react";
 
 
-export default function New({ setBlogs }) {
-    const [txt, setTxt] = useState("")
+export default function New({ setBlogs, setAdd }) {
     const [blog, setBlog] = useState({})
+
     const editor = useCreateBlockNote()
 
     const [title, setTitle] = useState("")
-    const [categ, setCateg] = useState("")
+    const [categ, setCateg] = useState("Design & Craft")
+    const [tags, setTags] = useState("")
+    const [excerpt, setExcerpt] = useState("")
 
-    const handleInput = function (evt) {
-        evt.preventDefault()
-        console.log(categ)
+    const handleInput = async function (evt) {
+        evt.preventDefault();
+        const html = await editor.blocksToHTMLLossy(editor.document);
+        const tag = tags.split(",")
+        console.log(tag)
+        setAdd(false)
     }
 
     return (
@@ -26,58 +32,71 @@ export default function New({ setBlogs }) {
                 <form action="" onSubmit={handleInput}>
                     <div className="">
 
-                        <div className="">
+                        <div className="flex">
                             <div className="">
-                                <label htmlFor="title">Title</label>
-                                <input 
-                                    type="text" 
-                                    name="title" 
-                                    id="" 
-                                    onChange={e => setTitle(e.target.value)} 
-                                    value={title} />
+                                <div className="">
+                                    <label htmlFor="title">Title</label>
+                                    <input
+                                        type="text"
+                                        name="title"
+                                        id=""
+                                        onChange={e => setTitle(e.target.value)}
+                                        value={title} />
+                                </div>
+
+                                <div className="">
+                                    <label htmlFor="content">Content</label>
+                                    <BlockNoteView editor={editor} />
+                                </div>
+
                             </div>
 
-                            <div className="">
-                                <label htmlFor="content">Content</label>
-                                <BlockNoteView editor={editor} />
+                            <div className="p-20">
+
+                                <div className="">
+                                    <label htmlFor="category">Category</label>
+                                    <select
+                                        name="category"
+                                        id=""
+                                        className=""
+                                        value={categ}
+                                        onChange={e => setCateg(e.target.value)}>
+                                        <option value="Design & Craft">Design & Craft</option>
+                                        <option value="Technology">Technology</option>
+                                        <option value="Architecture">Architecture</option>
+                                        <option value="Culture">Culture</option>
+                                        <option value="Science">Science</option>
+                                    </select>
+                                </div>
+
+                                <div className="">
+                                    <label htmlFor="tags">Tags</label>
+                                    <input
+                                        value={tags}
+                                        onChange={e => setTags(e.target.value)}
+                                        type="text"
+                                        name="tags"
+                                        id=""
+                                        placeholder="Use coma to seperate" />
+                                </div>
+
+                                <div className="">
+                                    <label htmlFor="excerpt">Excerpt</label>
+                                    <input
+                                        type="text"
+                                        name="excerpt"
+                                        id=""
+                                        value={excerpt}
+                                        onChange={e => setExcerpt(e.target.value)} />
+                                </div>
+
                             </div>
-                            
                         </div>
 
-                        <div className="">
-
-                            <div className="">
-                                <label htmlFor="category">Category</label>
-                                <select 
-                                    name="category" 
-                                    id="" 
-                                    className="" 
-                                    value={categ} 
-                                    onChange={e => setCateg(e.target.value)}>
-                                    <option value="Design & Craft">Design & Craft</option>
-                                    <option value="Technology">Technology</option>
-                                    <option value="Architecture">Architecture</option>
-                                    <option value="Culture">Culture</option>
-                                    <option value="Science">Science</option>
-                                </select>
-                            </div>
-                          
-                            <div className="">
-                                <label htmlFor="tags">Tags</label>
-                                <input type="text" name="tags" id="" placeholder="Use coma to seperate" />
-                            </div>
-                          
-                            <div className="">
-                                <label htmlFor="excerpt">Excerpt</label>
-                                <input type="text" name="excerpt" id="" />
-                            </div>
-                        
-                        </div>
-                        
                         <div className="">
                             <button className="" type="submit">Submit</button>
                         </div>
-                        
+
                     </div>
                 </form>
 

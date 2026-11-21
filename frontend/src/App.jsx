@@ -20,7 +20,7 @@ export default function App() {
   async function handleChange() {
     // const markdown = await editor.blocksToMarkdownLossy(editor.document);
     // settxt(markdown);
-    const html = await editor.blocksToHTMLLossy(editor.document);
+    
     settxt(html)
   }
   

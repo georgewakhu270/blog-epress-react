@@ -19,7 +19,7 @@ const Author = function({setBlogs, blogs}){
                     {add 
                         ?
                             <div className="">
-                                <New setBlogs={setBlogs}/>
+                                <New setBlogs={setBlogs} setAdd={setAdd}/>
                             </div>
                         :
                             <div className=""></div> 

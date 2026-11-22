@@ -1,7 +1,7 @@
 import { useState } from "react"
 import Author from "./component/Author"
 
-const Dashboard = function ({setBlogs, blogs}) {
+const Dashboard = function ({setBlogs, blogs, index, setIndex}) {
 
     const [author, setAuthor] = useState(true)
 
@@ -13,7 +13,7 @@ const Dashboard = function ({setBlogs, blogs}) {
                     ? 
                         <div className="">
                             
-                            <Author setBlogs={setBlogs} blogs={blogs}/>
+                            <Author setBlogs={setBlogs} blogs={blogs}  index={index} setIndex={setIndex}/>
 
                         </div>
                     :
@@ -21,8 +21,8 @@ const Dashboard = function ({setBlogs, blogs}) {
                             {blogs.length > 1 
                                 ? 
                                     <div className="">
-                                        {blogs.forEach((blog, index) => {
-                                            <div className="" key={index}>{blog}</div>
+                                        {blogs.forEach((blog, x) => {
+                                            <div className="" key={x}>{blog}</div>
                                         })}
                                     </div>  
                                 : 

@@ -1,7 +1,7 @@
 import { useState } from "react"
 import New from "./New"
 
-const Author = function({setBlogs, blogs}){
+const Author = function({setBlogs, blogs, index, setIndex}){
     const [add, setAdd] = useState(false)
     return (
         <> 
@@ -19,7 +19,7 @@ const Author = function({setBlogs, blogs}){
                     {add 
                         ?
                             <div className="">
-                                <New setBlogs={setBlogs} setAdd={setAdd}/>
+                                <New setBlogs={setBlogs} setAdd={setAdd}  index={index} setIndex={setIndex}/>
                             </div>
                         :
                             <div className=""></div> 

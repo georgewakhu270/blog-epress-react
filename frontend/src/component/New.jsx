@@ -6,8 +6,8 @@ import { useCreateBlockNote } from "@blocknote/react";
 import { useState } from "react";
 
 
-export default function New({ setBlogs, setAdd }) {
-    const [blog, setBlog] = useState({})
+export default function New({ setBlogs, setAdd, index, setIndex }) {
+    // const [blog, setBlog] = useState({})
 
     const editor = useCreateBlockNote()
 
@@ -20,8 +20,15 @@ export default function New({ setBlogs, setAdd }) {
         evt.preventDefault();
         const html = await editor.blocksToHTMLLossy(editor.document);
         const tag = tags.split(",")
-        console.log(tag)
+        setIndex(index + 1)
         setAdd(false)
+        const blog = {
+            id: index,
+            title: title,
+            category: categ,
+            tag: tag,
+            content: html,
+        }
     }
 
     return (

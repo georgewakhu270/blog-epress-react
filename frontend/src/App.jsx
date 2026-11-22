@@ -9,6 +9,7 @@ export default function App() {
 
   const [blogs, setBlogs] = useState([])
   const [tags, setTags] = useState([])
+  const [index, setIndex] = useState(0)
 
   const user = {
     id: 1,
@@ -30,7 +31,7 @@ export default function App() {
         {log 
           ? 
             <div className=""> 
-              <Dashboard setBlogs={setBlogs} blogs={blogs}/> 
+              <Dashboard setBlogs={setBlogs} blogs={blogs} index={index} setIndex={setIndex}/> 
             </div> 
           : 
             <div className="">

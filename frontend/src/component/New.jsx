@@ -6,29 +6,63 @@ import { useCreateBlockNote } from "@blocknote/react";
 import { useState } from "react";
 
 
-export default function New({ setBlogs, setAdd, index, setIndex }) {
+export default function New({ 
+    setBlogs, blogs, index, setIndex, tags, setTags, setAdd
+}) {
     // const [blog, setBlog] = useState({})
 
     const editor = useCreateBlockNote()
 
     const [title, setTitle] = useState("")
     const [categ, setCateg] = useState("Design & Craft")
-    const [tags, setTags] = useState("")
+    const [mtags, setmTags] = useState("")
     const [excerpt, setExcerpt] = useState("")
 
     const handleInput = async function (evt) {
         evt.preventDefault();
         const html = await editor.blocksToHTMLLossy(editor.document);
-        const tag = tags.split(",")
+
+        const ptag = mtags
+            .split(",")
+            .map(t => t.trim())
+            .filter(Boolean)
+        
         setIndex(index + 1)
         setAdd(false)
         const blog = {
             id: index,
             title: title,
             category: categ,
-            tag: tag,
             content: html,
         }
+
+        let updatedTags = [...tags]
+
+        ptag.forEach((x) => {
+            const tagName = typeof x === "string" ? x.trim().toLowerCase() : "";
+            if (!tagName) return;
+
+            const existingIndex = updatedTags.findIndex(
+                (item) => typeof item?.name === "string" && item.name.toLowerCase() === tagName
+            )
+            
+            if (existingIndex !== -1) {
+                const existingTag = updatedTags[existingIndex]
+                const curBlogs = existingTag.blog ?? []
+                updatedTags[existingIndex] = {
+                    ...existingTag,
+                    blog: curBlogs.includes(index) ? curBlogs : [...curBlogs, index]
+                }
+            } else{
+                // setTags([...tags, {name: x.trim().toLowerCase(), blog: [index]}])
+                updatedTags.push({name: x.trim().toLowerCase(), blog: [index]})
+            }
+        })
+        setTags(updatedTags)
+        // console.log(tags)
+        tags.forEach(x => {
+            console.log(x)
+        })
     }
 
     return (
@@ -80,8 +114,8 @@ export default function New({ setBlogs, setAdd, index, setIndex }) {
                                 <div className="p-1 sm:p-2 flex flex-col">
                                     <label htmlFor="tags">Tags</label>
                                     <input
-                                        value={tags}
-                                        onChange={e => setTags(e.target.value)}
+                                        value={mtags}
+                                        onChange={e => setmTags(e.target.value)}
                                         type="text"
                                         className="w-full p-2 outline-none border-b-2 border-gray-400"
                                         name="tags"

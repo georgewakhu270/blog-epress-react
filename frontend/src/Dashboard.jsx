@@ -1,7 +1,9 @@
 import { useState } from "react"
 import Author from "./component/Author"
 
-const Dashboard = function ({setBlogs, blogs, index, setIndex}) {
+const Dashboard = function ({
+    setBlogs, blogs, index, setIndex, tags, setTags,
+}) {
 
     const [author, setAuthor] = useState(true)
 
@@ -13,7 +15,13 @@ const Dashboard = function ({setBlogs, blogs, index, setIndex}) {
                     ? 
                         <div className="">
                             
-                            <Author setBlogs={setBlogs} blogs={blogs}  index={index} setIndex={setIndex}/>
+                            <Author 
+                                setBlogs={setBlogs} 
+                                blogs={blogs}
+                                tags={tags}
+                                setTags={setTags}
+                                index={index} 
+                                setIndex={setIndex}/>
 
                         </div>
                     :

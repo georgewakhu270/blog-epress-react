@@ -31,7 +31,13 @@ export default function App() {
         {log 
           ? 
             <div className=""> 
-              <Dashboard setBlogs={setBlogs} blogs={blogs} index={index} setIndex={setIndex}/> 
+              <Dashboard 
+                setBlogs={setBlogs} 
+                blogs={blogs} 
+                index={index} 
+                tags={tags}
+                setTags={setTags}
+                setIndex={setIndex}/> 
             </div> 
           : 
             <div className="">

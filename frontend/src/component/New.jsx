@@ -7,13 +7,13 @@ import { useState } from "react";
 
 
 export default function New({ 
-    setBlogs, blogs, index, setIndex, tags, setTags, setAdd
+    setBlogs, blogs, index, setIndex, tags, setTags, setAdd, user
 }) {
     
     const editor = useCreateBlockNote()
 
     const [title, setTitle] = useState("")
-    const [categ, setCateg] = useState("Design & Craft")
+    const [categ, setCateg] = useState("")
     const [mtags, setmTags] = useState("")
     const [excerpt, setExcerpt] = useState("")
 
@@ -54,7 +54,8 @@ export default function New({
             content: html, 
             title: title,
             category: categ,
-            excerpt: excerpt
+            excerpt: excerpt,
+            user: user
         }])
         setAdd(false)
     }
@@ -96,7 +97,7 @@ export default function New({
                                         className="w-full border-b-2 border-gray-400 p-1 bg-white rounded"
                                         value={categ}
                                         onChange={e => setCateg(e.target.value)}>
-                                        <option value="" disabled defaultChecked={true}>----</option>
+                                        <option value="" disabled>Select a category</option>
                                         <option value="Design & Craft">Design & Craft</option>
                                         <option value="Technology">Technology</option>
                                         <option value="Architecture">Architecture</option>

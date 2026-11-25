@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react"
+import { VscAdd } from "react-icons/vsc"
+
 import New from "./New"
 
 const Author = function ({
@@ -6,6 +8,7 @@ const Author = function ({
 }) {
     const [add, setAdd] = useState(false)
     const [category, setCategory] = useState([])
+    const [itemBlogs, setItemBlogs] = useState([])
 
     useEffect(
         function () {
@@ -26,7 +29,12 @@ const Author = function ({
                 <div className="">
                     {!add
                         ?
-                        <button className="" onClick={() => setAdd(true)}>+ New Blog</button>
+                        <button 
+                            className="flex" 
+                            onClick={() => setAdd(true)}>
+                                <VscAdd size={30} className="p-2"/>
+                                New Blog
+                        </button>
                         :
                         <></>
                     }
@@ -62,7 +70,7 @@ const Author = function ({
                                                 ))
                                             }
                                         </div>
-                                        <div className=""></div>
+                                        <div className="p-1 bg-gray-200 w-full"></div>
                                     </div>
                                     :
                                     <div className="flex p-2 justify-center items-center bg-gray-100 min-h-[50vh]">

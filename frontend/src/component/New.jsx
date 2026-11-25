@@ -9,8 +9,7 @@ import { useState } from "react";
 export default function New({ 
     setBlogs, blogs, index, setIndex, tags, setTags, setAdd
 }) {
-    // const [blog, setBlog] = useState({})
-
+    
     const editor = useCreateBlockNote()
 
     const [title, setTitle] = useState("")
@@ -27,15 +26,7 @@ export default function New({
             .map(t => t.trim())
             .filter(Boolean)
         
-        setIndex(index + 1)
-        setAdd(false)
-        const blog = {
-            id: index,
-            title: title,
-            category: categ,
-            content: html,
-        }
-
+        setIndex(index + 1)        
         let updatedTags = [...tags]
 
         ptag.forEach((x) => {
@@ -54,20 +45,23 @@ export default function New({
                     blog: curBlogs.includes(index) ? curBlogs : [...curBlogs, index]
                 }
             } else{
-                // setTags([...tags, {name: x.trim().toLowerCase(), blog: [index]}])
                 updatedTags.push({name: x.trim().toLowerCase(), blog: [index]})
             }
         })
         setTags(updatedTags)
-        // console.log(tags)
-        tags.forEach(x => {
-            console.log(x)
-        })
+        setBlogs([...blogs, {
+            id: index,
+            content: html, 
+            title: title,
+            category: categ,
+            excerpt: excerpt
+        }])
+        setAdd(false)
     }
 
     return (
         <>
-            <div className="">
+            <div className="bg-gray-100">
                 <h1 className="font-sans text-2xl">Write a New Blog</h1>
 
                 <form action="" onSubmit={handleInput}>
@@ -76,17 +70,17 @@ export default function New({
                         <div className="flex flex-col-reverse sm:flex-row gap-5 sm:h-[calc(100vh-5rem)] sm:overflow-hidden sm:pr-20 sm:pl-20 sm:pt-10">
                             <div className="flex-grow min-h-0 overflow-y-auto pr-1">
                                 <div className="">
-                                    <label htmlFor="content">Content</label>
-                                    <BlockNoteView editor={editor} />
+                                    <label htmlFor="content" className="sm:text-center sm:flex sm:justify-center">Content</label>
+                                    <BlockNoteView editor={editor} className="w-full"/>
                                 </div>
 
                             </div>
 
-                            <div className="sm:w-[400px] w-full sm:h-full shrink-0 sm:border-l-2 sm:border-gray-400">
-                                <div className="flex flex-col p-1 sm:p-2 sm:sticky sm:top-0 bg-white z-10">
+                            <div className="sm:w-[300px] w-full sm:h-full shrink-0 sm:border-l-2 sm:border-gray-400">
+                                <div className="flex flex-col p-1 sm:p-2 sm:sticky sm:top-0 z-10">
                                     <label htmlFor="title">Title</label>
                                     <input
-                                        className="w-full border-b-2 border-gray-400 outline-none p-1"
+                                        className="w-full border-b-2 border-gray-400 outline-none p-1 bg-white rounded"
                                         type="text"
                                         name="title"
                                         id=""
@@ -99,10 +93,10 @@ export default function New({
                                     <select
                                         name="category"
                                         id=""
-                                        className="w-full border-b-2 border-gray-400 p-1"
+                                        className="w-full border-b-2 border-gray-400 p-1 bg-white rounded"
                                         value={categ}
                                         onChange={e => setCateg(e.target.value)}>
-                                        <option disabled>----</option>
+                                        <option value="" disabled defaultChecked={true}>----</option>
                                         <option value="Design & Craft">Design & Craft</option>
                                         <option value="Technology">Technology</option>
                                         <option value="Architecture">Architecture</option>
@@ -117,7 +111,7 @@ export default function New({
                                         value={mtags}
                                         onChange={e => setmTags(e.target.value)}
                                         type="text"
-                                        className="w-full p-2 outline-none border-b-2 border-gray-400"
+                                        className="w-full p-2 outline-none border-b-2 border-gray-400 bg-white rounded"
                                         name="tags"
                                         id=""
                                         placeholder="Use coma to seperate" />
@@ -128,7 +122,7 @@ export default function New({
                                     <textarea
                                         name=""
                                         id=""
-                                        className="p-1 w-full border-b-2 border-gray-400 outline-none"
+                                        className="p-1 w-full border-b-2 border-gray-400 outline-none bg-white rounded"
                                         rows="7"
                                         value={excerpt}
                                         onChange={e => setExcerpt(e.target.value)}>

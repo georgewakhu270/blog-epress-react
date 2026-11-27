@@ -3,6 +3,8 @@ import { DiGithubBadge } from "react-icons/di"
 import { MdEmail, MdOutlineWhatsapp } from "react-icons/md"
 import { FaXTwitter, FaLinkedin, FaRegCopyright } from "react-icons/fa6"
 
+import { defaultAuthor, blogList } from './data/data.js'
+
 import DOMPurify from "dompurify"
 
 import headshot from "./assets/headshot.jpg"
@@ -19,33 +21,29 @@ export default function App() {
   // const [tags, setTags] = useState([])
   const [index, setIndex] = useState(1)
 
-  const [user, setUser] = useState({
-    id: 1,
-    name: 'Admin',
-    email: 'admin@gmail.com',
-    password: '1234',
-    img: headshot   
-  })
+  const [user, setUser] = useState(defaultAuthor)
 
   const [tags, setTags] = useState([{
     name: 'hello', blog: [0]
   }])
 
-  const [blogs, setBlogs] = useState([{
-    id: 0,
-    content: "<p>Hello world</p>",
-    title: "hello world",
-    category: "hello",
-    excerpt: "hello",
-    user: user
-  }, {
-    id: 1,
-    content: "<h1>Who is Kim Philby</h1><p>This was  British intelligence officer who sold out his nation.</p>",
-    title: "This is Kim Philby",
-    category: "history",
-    excerpt: "Who is regarded as the biggest British traitor in recent British intelligence history.",
-    user: user
-  }])
+  const [blogs, setBlogs] = useState(blogList)
+
+  // const [blogs, setBlogs] = useState([{
+  //   id: 0,
+  //   content: "<p>Hello world</p>",
+  //   title: "hello world",
+  //   category: "hello",
+  //   excerpt: "hello",
+  //   user: user
+  // }, {
+  //   id: 1,
+  //   content: "<h1>Who is Kim Philby</h1><p>This was  British intelligence officer who sold out his nation.</p>",
+  //   title: "This is Kim Philby",
+  //   category: "history",
+  //   excerpt: "Who is regarded as the biggest British traitor in recent British intelligence history.",
+  //   user: user
+  // }])
 
   return (
     <div className="min-h-screen flex flex-col">

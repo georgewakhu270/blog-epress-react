@@ -84,7 +84,7 @@ const Author = function ({
                                                         ?
                                                             "sm:flex-row w-full"
                                                         :
-                                                            "w-full sm:w-1/3"
+                                                            "w-full sm:w-[calc(33.33%-0.67rem)]"
                                                     }`}
                                                     key={x}>
 

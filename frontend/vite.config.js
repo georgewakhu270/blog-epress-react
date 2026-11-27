@@ -7,5 +7,5 @@ export default defineConfig({
   plugins: [
     react(), 
     tailwindcss()
-  ], base: '/blog-express-react/'
+  ], base: '/blog-epress-react/'
 })

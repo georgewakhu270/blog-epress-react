@@ -5,6 +5,8 @@ import { FaXTwitter, FaLinkedin, FaRegCopyright } from "react-icons/fa6"
 
 import DOMPurify from "dompurify"
 
+import headshot from "./assets/headshot.jpg"
+
 import Dashboard from "./Dashboard";
 
 export default function App() {
@@ -21,7 +23,8 @@ export default function App() {
     id: 1,
     name: 'Admin',
     email: 'admin@gmail.com',
-    password: '1234'
+    password: '1234',
+    img: headshot   
   })
 
   const [tags, setTags] = useState([{
@@ -40,8 +43,10 @@ export default function App() {
     content: "<h1>Who is Kim Philby</h1><p>This was  British intelligence officer who sold out his nation.</p>",
     title: "This is Kim Philby",
     category: "history",
-    excerpt: "Who is regarded as the biggest British traitor in recent British intelligence history."
+    excerpt: "Who is regarded as the biggest British traitor in recent British intelligence history.",
+    user: user
   }])
+
   return (
     <div className="min-h-screen flex flex-col">
       <div className="">

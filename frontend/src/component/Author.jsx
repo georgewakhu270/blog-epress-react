@@ -27,18 +27,23 @@ const Author = function ({
     return (
         <>
             <div className="">
-                <div className="">
+                <div className="flex p-1">
                     {!add
                         ?
                         <button
-                            className="flex"
+                            className="flex border-[1.7px] px-1 rounded-full border-gray-400 text-gray-500 mx-2 text-sm"
                             onClick={() => setAdd(true)}>
-                            <VscAdd size={30} className="p-2" />
-                            New Blog
+                            <VscAdd size={27} className="p-2" />
+                            <span className="p-1">New Blog</span>                            
                         </button>
                         :
                         <></>
                     }
+                    <div 
+                        className="border-l-2 border-gray-400 flex">
+                            <img alt="" className="h-[30px] mx-2 mt-1 border-2 border-yellow-200 rounded-full w-[30px] " src={user.img}/>
+                            <p className="text-gray-500">{user.name}</p>
+                        </div>
                 </div>
 
                 <div className="">

@@ -2,7 +2,7 @@ import { useState } from "react"
 import Author from "./component/Author"
 
 const Dashboard = function ({
-    setBlogs, blogs, index, setIndex, tags, setTags,
+    setBlogs, blogs, index, setIndex, tags, setTags, user, setUser
 }) {
 
     const [author, setAuthor] = useState(true)
@@ -21,6 +21,8 @@ const Dashboard = function ({
                                 tags={tags}
                                 setTags={setTags}
                                 index={index} 
+                                user={user}
+                                setUser={setUser}
                                 setIndex={setIndex}/>
 
                         </div>

@@ -8,7 +8,8 @@ const Author = function ({
 }) {
     const [add, setAdd] = useState(false)
     const [category, setCategory] = useState([])
-    const [itemBlogs, setItemBlogs] = useState([])
+    const [itemBlogs, setItemBlogs] = useState(blogs)
+    const [itemList, setItemList] = useState("default")
 
     useEffect(
         function () {
@@ -29,11 +30,11 @@ const Author = function ({
                 <div className="">
                     {!add
                         ?
-                        <button 
-                            className="flex" 
+                        <button
+                            className="flex"
                             onClick={() => setAdd(true)}>
-                                <VscAdd size={30} className="p-2"/>
-                                New Blog
+                            <VscAdd size={30} className="p-2" />
+                            New Blog
                         </button>
                         :
                         <></>
@@ -55,11 +56,11 @@ const Author = function ({
                                 setIndex={setIndex} />
                         </div>
                         :
-                        <div className="">
-                            <div className="">
+                        <div className="bg-gray-50">
+                            <div className="sm:px-20">
                                 {blogs.length > 0
                                     ?
-                                    <div className="p-2 bg-gray-100">
+                                    <div className="p-2">
                                         <div className="flex p-1">
                                             <button className="">all</button>
                                             {Array.isArray(category) &&
@@ -70,7 +71,49 @@ const Author = function ({
                                                 ))
                                             }
                                         </div>
-                                        <div className="p-1 bg-gray-200 w-full"></div>
+                                        <div className="p-1 w-full flex flex-wrap gap-4">
+                                            {itemBlogs.map((itemb, x) => (
+                                                <div className={
+                                                    `rounded-lg shadow-lg flex flex-col bg-white
+                                                    ${x === 0
+                                                        ?
+                                                            "sm:flex-row w-full"
+                                                        :
+                                                            "w-full sm:w-1/3"
+                                                    }`}
+                                                    key={x}>
+
+                                                    <div
+                                                        className={`
+                                                            w-full bg-blue-500
+                                                            ${x === 0 
+                                                                ? 
+                                                                    "rounded-t-lg sm:rounded-l-lg sm:rounded-tr-none w-full sm:w-1/2" 
+                                                                : 
+                                                                    "rounded-t-lg w-full"}
+                                                            `}>
+                                                        <div 
+                                                            className="m-2 px-[5px] py-[1px] bg-white font-bold w-fit whitespace-nowrap rounded-full text-[12px] text-gray-900">
+                                                            {itemb.category}
+                                                        </div>
+                                                    </div>
+
+                                                    <div
+                                                        className={`
+                                                            w-full p-2 w-full
+                                                            ${x === 0 
+                                                                ? 
+                                                                    "sm:w-1/2"
+                                                                : 
+                                                                    ""
+                                                            }`}>
+                                                            <h1 className="text-black text-[25px] font-bold">{itemb.title}</h1>
+                                                            <p className="text-gray-500">{itemb.excerpt}</p>
+                                                    </div>
+                                                </div>
+                                            )
+                                            )}
+                                        </div>
                                     </div>
                                     :
                                     <div className="flex p-2 justify-center items-center bg-gray-100 min-h-[50vh]">

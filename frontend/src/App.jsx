@@ -15,7 +15,7 @@ export default function App() {
   // const [blogs, setBlogs] = useState([])
 
   // const [tags, setTags] = useState([])
-  const [index, setIndex] = useState(0)
+  const [index, setIndex] = useState(1)
 
   const [user, setUser] = useState({
     id: 1,
@@ -35,6 +35,12 @@ export default function App() {
     category: "hello",
     excerpt: "hello",
     user: user
+  }, {
+    id: 1,
+    content: "<h1>Who is Kim Philby</h1><p>This was  British intelligence officer who sold out his nation.</p>",
+    title: "This is Kim Philby",
+    category: "history",
+    excerpt: "Who is regarded as the biggest British traitor in recent British intelligence history."
   }])
   return (
     <div className="min-h-screen flex flex-col">

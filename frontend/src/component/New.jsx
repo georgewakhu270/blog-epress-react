@@ -103,6 +103,7 @@ export default function New({
                                         <option value="Architecture">Architecture</option>
                                         <option value="Culture">Culture</option>
                                         <option value="Science">Science</option>
+                                        <option value="History">History</option>
                                     </select>
                                 </div>
 

@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react"
 import { VscAdd } from "react-icons/vsc"
+import { FaArrowRight } from "react-icons/fa"
 
 import New from "./New"
 
 const Author = function ({
     setBlogs, blogs, index, setIndex, tags, setTags, user, setUser
 }) {
-    const [add, setAdd] = useState(false)
+    const [add, setAdd] = useState("default")
     const [category, setCategory] = useState([])
     const [itemBlogs, setItemBlogs] = useState(blogs)
     const [itemList, setItemList] = useState("default")
@@ -28,11 +29,11 @@ const Author = function ({
         <>
             <div className="">
                 <div className="flex p-1">
-                    {!add
+                    {add !== "add blog"
                         ?
                         <button
                             className="flex border-[1.7px] px-1 rounded-full border-gray-400 text-gray-500 mx-2 text-sm"
-                            onClick={() => setAdd(true)}>
+                            onClick={() => setAdd("add blog")}>
                             <VscAdd size={27} className="p-2" />
                             <span className="p-1">New Blog</span>                            
                         </button>
@@ -41,13 +42,15 @@ const Author = function ({
                     }
                     <div 
                         className="border-l-2 border-gray-400 flex">
-                            <img alt="" className="h-[30px] mx-2 mt-1 border-2 border-yellow-200 rounded-full w-[30px] " src={user.img}/>
+                            <img 
+                                alt={user.name} 
+                                className="h-[30px] object-cover mx-2 mt-1 border-2 border-yellow-200 rounded-full w-[30px] " src={user.img}/>
                             <p className="text-gray-500">{user.name}</p>
                         </div>
                 </div>
 
                 <div className="">
-                    {add
+                    {add === "add blog"
                         ?
                         <div className="">
                             <New
@@ -90,30 +93,52 @@ const Author = function ({
 
                                                     <div
                                                         className={`
-                                                            w-full bg-blue-500
+                                                            w-full relative overflow-hidden
                                                             ${x === 0 
                                                                 ? 
-                                                                    "rounded-t-lg sm:rounded-l-lg sm:rounded-tr-none w-full sm:w-1/2" 
+                                                                    "rounded-t-lg sm:rounded-l-lg sm:rounded-tr-none w-full sm:w-3/5" 
                                                                 : 
                                                                     "rounded-t-lg w-full"}
                                                             `}>
                                                         <div 
-                                                            className="m-2 px-[5px] py-[1px] bg-white font-bold w-fit whitespace-nowrap rounded-full text-[12px] text-gray-900">
+                                                            className="absolute top-2 left-2 z-10 px-2 py-0.5 bg-white font-bold w-fit whitespace-nowrap rounded-full text-[12px] text-gray-900 shadow">
                                                             {itemb.category}
                                                         </div>
+                                                        <img 
+                                                            src={itemb.img} 
+                                                            alt={itemb.title} 
+                                                            className="w-full h-full object-cover" />
+
                                                     </div>
 
                                                     <div
                                                         className={`
-                                                            w-full p-2 w-full
+                                                            w-full p-2 w-full sm:p-10 flex flex-col
                                                             ${x === 0 
                                                                 ? 
-                                                                    "sm:w-1/2"
+                                                                    "sm:w-2/5"
                                                                 : 
                                                                     ""
                                                             }`}>
                                                             <h1 className="text-black text-[25px] font-bold">{itemb.title}</h1>
                                                             <p className="text-gray-500">{itemb.excerpt}</p>
+                                                            <div className="mt-auto flex justify-between border-t-2 border-yellow-100 pt-3">
+                                                                <div className="flex">
+                                                                    <div className="">
+                                                                        <img 
+                                                                            src={user.img} 
+                                                                            alt="" 
+                                                                            className="rounded-full h-15 object-cover w-15 border-2 border-yellow-200"/>
+                                                                    </div>
+                                                                    <div className="flex"></div>
+                                                                </div>
+                                                                <button className="flex text-gray-500">
+                                                                    <span className="">Read</span>
+                                                                    <div className="p-1">
+                                                                        <FaArrowRight/>
+                                                                    </div>
+                                                                </button>
+                                                            </div>
                                                     </div>
                                                 </div>
                                             )

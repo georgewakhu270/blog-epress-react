@@ -5,37 +5,56 @@ export const defaultAuthor = {
   name: 'Elanor Rigby',
   email: 'elanorrigby@beatles.com',
   password: '1234',
-  img: headshot 
+  img: headshot,
+  role: 'Software engineer',
+  description: ''
 }
 
-export const blogList = [
+export const tagList = [
   {
-    id: 0,
-    title: 'The quiet return of tactile interfaces in digital publishing',
-    category: 'Design & Craft',
-    excerpt: 'Why modern web typography, generous whitespace, and paper-inspired palettes are rescuing long-form reading from algorithmic noise.',
-    content: '<p>For the better of a decade, the web optimized almost exclusively for velocity. Feeds became endless, headlines grew louder, and the quiet dignity of a well-set page was traded for engagement loops.</p>'
-
+    name: 'typography',
+    blog: [0]
   }, {
-    id: 1,
-    title: 'Local-first software and the ownership of creative work',
-    category: 'Technology',
-    excerpt: 'How modern browser storage and sync engine let writers own every word they draft without sacrificing cloud convenience.',
-    content: '<p>For the better of a decade, the web optimized almost exclusively for velocity. Feeds became endless, headlines grew louder, and the quiet dignity of a well-set page was traded for engagement loops.</p>'
-
-  } , {
-    id: 2,
-    title: 'Daylight, timber and acoustics: inside Kyoto\'s micro libraries',
-    category: 'Architecture',
-    excerpt: 'A photographic study of neighborhood reading rooms tucked into narrow wooden machiya townhouses across central Kyoto.',
-    content: '<p>For the better of a decade, the web optimized almost exclusively for velocity. Feeds became endless, headlines grew louder, and the quiet dignity of a well-set page was traded for engagement loops.</p>'
-
-  } , {
-    id: 3,
-    title: 'Notes on keeping a commonplace book in an age of infinite search',
-    category: 'Culture & Essays',
-    excerpt: 'Why manually transcribing passages and marginalia builds deeper synthesis than bookmarking a thousand unread tabs. ',
-    content: '<p>For the better of a decade, the web optimized almost exclusively for velocity. Feeds became endless, headlines grew louder, and the quiet dignity of a well-set page was traded for engagement loops.</p>'
-
-  }
+    name: 'editorial design',
+    blog: [0]
+  }, {
+    name: 'minimalism',
+    blog: [0]
+  }, {
+    name: 'local-first',
+    blog: [1]
+  }, {
+    name: 'architecture',
+    blog: [1]
+  }, {
+    name: 'writing tools',
+    blog: [1]
+  }, {
+    name: 'kyoto',
+    blog: [2]
+  }, {
+    name: 'libraries',
+    blog: [2]
+  }, {
+    name: 'spatial design',
+    blog: [2]
+  }, {
+    name: 'note-taking',
+    blog: [3]
+  }, {
+    name: 'literature',
+    blog: [3]
+  }, {
+    name: 'focus',
+    blog: [3]
+  },  {
+    name: 'mi6 history',
+    blog: [4]
+  }, {
+    name: 'spies',
+    blog: [4]
+  }, {
+    name: 'coldwar',
+    blog: [4]
+  },
 ]

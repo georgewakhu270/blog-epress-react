@@ -1,9 +1,10 @@
 import "@blocknote/core/fonts/inter.css";
-import { BlockNoteView } from "@blocknote/mantine";
 import "@blocknote/mantine/style.css";
-import { useCreateBlockNote } from "@blocknote/react";
 
+import { BlockNoteView } from "@blocknote/mantine";
+import { useCreateBlockNote } from "@blocknote/react";
 import { useState } from "react";
+import { FaArrowLeft } from "react-icons/fa"
 
 
 export default function New({
@@ -57,14 +58,24 @@ export default function New({
             excerpt: excerpt,
             user: user
         }])
-        setAdd(false)
+        setAdd('default')
     }
 
     return (
         <>
             <div className="bg-gray-100">
-                <h1 className="font-sans text-2xl">Write a New Blog</h1>
-
+                <div className="flex justify-between px-8 py-1">
+                    <h1 className="font-sans text-2xl font-900 text-gray-500">Write a New Blog</h1>
+                    <button 
+                        className="text-gray-500 flex" 
+                        onClick={()=>{setAdd('default')}}>
+                            <div className="p-1">
+                                <FaArrowLeft />
+                            </div>
+                            <span className="">Back to Stories</span>
+                        </button>
+                </div>
+                
                 <form action="" onSubmit={handleInput}>
                     <div className="p-4">
 

@@ -89,46 +89,40 @@ const Author = function ({
                       {itemBlogs.map((itemb, x) => (
                         <div
                           className={`rounded-lg shadow-lg flex flex-col bg-white
-                                                    ${
-                                                      x === 0
-                                                        ? "sm:flex-row w-full h-[475px]"
-                                                        : "w-full sm:w-[calc(33.33%-0.67rem)]"
-                                                    }`}
-                          key={x}
-                        >
+                            ${ x === 0
+                              ? "sm:flex-row w-full h-[475px]"
+                              : "w-full sm:w-[calc(33.33%-0.67rem)]"
+                          }`}
+                          key={x}>
                           <div
-                            className={`
-                                                            w-full relative overflow-hidden
-                                                            ${
-                                                              x === 0
-                                                                ? "rounded-t-lg sm:rounded-l-lg sm:rounded-tr-none w-full sm:w-3/5"
-                                                                : "rounded-t-lg w-full"
-                                                            }
-                                                            `}
-                          >
+                            className={`w-full relative overflow-hidden
+                              ${x === 0
+                              ? "rounded-t-lg sm:rounded-l-lg sm:rounded-tr-none w-full sm:w-3/5"
+                              : "rounded-t-lg w-full"
+                            }`}>
                             <div className="absolute top-2 left-2 z-10 px-2 py-0.5 bg-white font-bold w-fit whitespace-nowrap rounded-full text-[12px] text-gray-900 shadow">
                               {itemb.category}
                             </div>
                             <img
                               src={itemb.img}
                               alt={itemb.title}
-                              className="w-full h-full object-cover"
-                            />
+                              className={`w-full h-full object-cover 
+                                ${x=== 0 
+                                  ? ""
+                                  : "sm:h-[250px]"
+                              }`}/>
                           </div>
 
                           <div
-                            className={`
-                                                            w-full p-2 w-full sm:p-10 flex flex-col
-                                                            ${
-                                                              x === 0
-                                                                ? "sm:w-2/5"
-                                                                : ""
-                                                            }`}
-                          >
+                            className={`w-full p-2 w-full sm:p-10 flex flex-col flex-1
+                                ${x === 0
+                                  ? "sm:w-2/5"
+                                  : "min-h-[300px]"
+                              }`}>
                             <h1 className="text-black text-[25px] font-bold">
                               {itemb.title}
                             </h1>
-                            <p className="text-gray-500">{itemb.excerpt}</p>
+                            <p className="text-gray-500 pb-5">{itemb.excerpt}</p>
                             <div className="mt-auto flex justify-between border-t-2 border-yellow-100 pt-3">
                               <div className="flex">
                                 <div className="">
@@ -157,17 +151,6 @@ const Author = function ({
                     <h1 className="">You have no blogs</h1>
                   </div>
                 )}
-                {/* {tags.length > 0 
-                                        ? 
-                                            <div className="flex p-2 gap-1">
-                                                <button className="border p-[2px] rounded">all</button>
-                                                {tags.map((tag, x) => (
-                                                    <button className="border p-[2px] rounded" key={tag.name ?? x}>{tag.name}</button>
-                                                ))}
-                                            </div>
-                                        :
-                                            <div className="">No tags</div>
-                                    } */}
               </div>
             </div>
           )}

@@ -1,23 +1,22 @@
 import { useState } from "react";
-import { DiGithubBadge } from "react-icons/di"
-import { MdEmail, MdOutlineWhatsapp } from "react-icons/md"
-import { FaXTwitter, FaLinkedin, FaRegCopyright } from "react-icons/fa6"
+import { DiGithubBadge } from "react-icons/di";
+import { MdEmail, MdOutlineWhatsapp } from "react-icons/md";
+import { FaXTwitter, FaLinkedin, FaRegCopyright } from "react-icons/fa6";
 
-import { defaultAuthor, tagList } from './data/data.js'
+import { defaultAuthor, tagList } from "./data/data.js";
 import { blogList } from "./data/blog.js";
 
-import DOMPurify from "dompurify"
+import DOMPurify from "dompurify";
 
 import Dashboard from "./Dashboard";
 
 export default function App() {
-
-  const [log, setLog] = useState(true)
-  const [sign, setSign] = useState(false)
-  const [tags, setTags] = useState(tagList)
-  const [index, setIndex] = useState(1)
-  const [user, setUser] = useState(defaultAuthor)
-  const [blogs, setBlogs] = useState(blogList)
+  const [log, setLog] = useState(true);
+  const [sign, setSign] = useState(false);
+  const [tags, setTags] = useState(tagList);
+  const [index, setIndex] = useState(1);
+  const [user, setUser] = useState(defaultAuthor);
+  const [blogs, setBlogs] = useState(blogList);
 
   //   id: 1,
   //   content: "<h1>Who is Kim Philby</h1><p>This was  British intelligence officer who sold out his nation.</p>",
@@ -30,8 +29,7 @@ export default function App() {
     <div className="min-h-screen flex flex-col">
       <div className="">
         <main className="flex-grow">
-          {log
-            ?
+          {log ? (
             <div className="">
               <Dashboard
                 setBlogs={setBlogs}
@@ -41,20 +39,22 @@ export default function App() {
                 user={user}
                 setUser={setUser}
                 setTags={setTags}
-                setIndex={setIndex} />
+                setIndex={setIndex}
+              />
             </div>
-            :
-            <div className="">
-
-            </div>
-          }
+          ) : (
+            <div className=""></div>
+          )}
         </main>
       </div>
 
       <footer className="mt-auto flex sm:justify-around flex-col justify-center sm:flex-row bg-gray-800 p-5 w-full">
         <div className="flex flex-col">
           <h1 className="text-gray-100 underline">Contacts</h1>
-          <a href="mailto:georgewakhu270@gmail.com" className="text-gray-300 flex gap-2 p-2">
+          <a
+            href="mailto:georgewakhu270@gmail.com"
+            className="text-gray-300 flex gap-2 p-2"
+          >
             <MdEmail size={28} />
             Email
           </a>
@@ -79,15 +79,13 @@ export default function App() {
           <p className="flex">
             <span className="px-2">
               <FaRegCopyright size={25} />
-            </span>
-            {" "}
+            </span>{" "}
             2026 by Derrick Wakhu
           </p>
         </div>
       </footer>
 
       {/* <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(txt) }} /> */}
-
     </div>
-  )
+  );
 }

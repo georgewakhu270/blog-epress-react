@@ -6,10 +6,10 @@ import { useCreateBlockNote } from "@blocknote/react";
 import { useState } from "react";
 
 
-export default function New({ 
+export default function New({
     setBlogs, blogs, index, setIndex, tags, setTags, setAdd, user
 }) {
-    
+
     const editor = useCreateBlockNote()
 
     const [title, setTitle] = useState("")
@@ -25,8 +25,8 @@ export default function New({
             .split(",")
             .map(t => t.trim())
             .filter(Boolean)
-        
-        setIndex(index + 1)        
+
+        setIndex(index + 1)
         let updatedTags = [...tags]
 
         ptag.forEach((x) => {
@@ -36,7 +36,7 @@ export default function New({
             const existingIndex = updatedTags.findIndex(
                 (item) => typeof item?.name === "string" && item.name.toLowerCase() === tagName
             )
-            
+
             if (existingIndex !== -1) {
                 const existingTag = updatedTags[existingIndex]
                 const curBlogs = existingTag.blog ?? []
@@ -44,14 +44,14 @@ export default function New({
                     ...existingTag,
                     blog: curBlogs.includes(index) ? curBlogs : [...curBlogs, index]
                 }
-            } else{
-                updatedTags.push({name: x.trim().toLowerCase(), blog: [index]})
+            } else {
+                updatedTags.push({ name: x.trim().toLowerCase(), blog: [index] })
             }
         })
         setTags(updatedTags)
         setBlogs([...blogs, {
             id: index,
-            content: html, 
+            content: html,
             title: title,
             category: categ,
             excerpt: excerpt,
@@ -72,7 +72,7 @@ export default function New({
                             <div className="flex-grow min-h-0 overflow-y-auto pr-1">
                                 <div className="">
                                     <label htmlFor="content" className="sm:text-center sm:flex sm:justify-center">Content</label>
-                                    <BlockNoteView editor={editor} className="w-full"/>
+                                    <BlockNoteView editor={editor} className="w-full" />
                                 </div>
 
                             </div>

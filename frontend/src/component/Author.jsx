@@ -3,6 +3,7 @@ import { VscAdd } from "react-icons/vsc";
 import { FaArrowRight } from "react-icons/fa";
 
 import New from "./New";
+import Read from "./Read";
 
 const Author = function ({
   setBlogs,
@@ -143,7 +144,9 @@ const Author = function ({
                                   <p className="text-gray-400 text-xs uppercase">{user.role}</p>
                                 </div>
                               </div>
-                              <button className="flex text-gray-500">
+                              <button 
+                                onClick={()=>setAdd("read")}
+                                className="flex text-gray-500">
                                 <span className="">Read</span>
                                 <div className="p-1">
                                   <FaArrowRight />
@@ -163,7 +166,9 @@ const Author = function ({
               </div>
             </div>
           ) : add === "read" ? (
-            <div className="" ></div>
+            <div className="" >
+              <Read/>
+            </div>
           ) : (
             <div className=""></div>
           )}

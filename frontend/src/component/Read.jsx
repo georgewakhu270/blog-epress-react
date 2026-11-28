@@ -1,6 +1,7 @@
 const Read = function () {
   return (
-    <><div className=""></div></>
+    <><div className="">
+      <h1>hello read</h1></div></>
   )
 }
 

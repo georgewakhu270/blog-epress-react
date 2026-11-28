@@ -4,6 +4,7 @@ import { VscAdd } from "react-icons/vsc";
 import New from "./New";
 import ReadBlog from "./ReadBlog";
 import DefaultBlogView from "./DefaultBlogView";
+import EditBlog from "./EditBlog";
 
 const Author = function ({
   setBlogs,
@@ -76,7 +77,17 @@ const Author = function ({
                 blog={itemRead} 
                 setAdd={setAdd}/>
             </div>
-          ) : (
+          ) : add === "edit" ?(
+            <div className="">
+              <EditBlog blog={itemRead} setAdd={setAdd} setBlogs={setBlogs}
+                blogs={blogs}
+                tags={tags}
+                setTags={setTags}
+                index={index} user={user}
+                setIndex={setIndex}/>
+            </div>
+          )
+            :(
             <div className=""></div>
           )}
         </div>

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { FaArrowRight } from "react-icons/fa";
+import { MdEdit } from "react-icons/md"
 
 const DefaultBlogView = function ({
   blogs, setAdd, setItemRead
@@ -22,6 +23,11 @@ const DefaultBlogView = function ({
 
   const readBlog = function(item){
     setAdd("read")
+    setItemRead(item)
+  }
+
+  const editBlog = function (item) {
+    setAdd("edit")
     setItemRead(item)
   }
 
@@ -79,6 +85,15 @@ const DefaultBlogView = function ({
                               : "min-h-[300px]"
                             }
                           `}>
+                            <div className="flex justify-between">
+                              <div className=""></div>
+                              <div className="flex">
+                                <button className="flex" onClick={()=>editBlog(itemb)}>
+                                  <MdEdit/>
+                                  Edit
+                                </button>
+                              </div>
+                            </div>
                             <h1 className="text-black font-bold text-[25px]">
                               {itemb.title}
                             </h1>

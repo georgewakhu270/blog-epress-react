@@ -9,7 +9,7 @@ const ReadBlog = function ({
 }) {
   return (
     <>
-      <div className="sm:px-20 px-2">
+      <div className="sm:px-25 px-2">
         <div className="flex py-2 border-b-2 border-gray-300">
           <button 
             className="flex text-gray-500"

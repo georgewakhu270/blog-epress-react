@@ -73,7 +73,7 @@ export default function New({
   return (
     <>
       <div className="bg-gray-100">
-        <div className="flex justify-between px-8 py-1">
+        <div className="flex justify-between px-8 sm:mx-20 py-2 border-b-2 border-gray-300 m-3">
           <h1 className="font-sans text-2xl font-900 text-gray-500">
             Write a New Blog
           </h1>

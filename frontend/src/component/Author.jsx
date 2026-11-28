@@ -2,7 +2,7 @@ import { useState } from "react";
 import { VscAdd } from "react-icons/vsc";
 
 import New from "./New";
-import Read from "./Read";
+import ReadBlog from "./ReadBlog";
 import DefaultBlogView from "./DefaultBlogView";
 
 const Author = function ({
@@ -18,6 +18,7 @@ const Author = function ({
   const [add, setAdd] = useState("default");
   const [itemBlogs, setItemBlogs] = useState(blogs);
   const [itemList, setItemList] = useState("default");
+  const [itemRead, setItemRead] = useState();
 
   return (
     <>
@@ -65,10 +66,15 @@ const Author = function ({
               />
             </div>
           ) : add === "default" ? (
-            <DefaultBlogView blogs={blogs} setAdd={setAdd}/>
+            <DefaultBlogView 
+              blogs={blogs} 
+              setAdd={setAdd} 
+              setItemRead={setItemRead}/>
           ) : add === "read" ? (
             <div className="" >
-              <Read/>
+              <ReadBlog 
+                blog={itemRead} 
+                setAdd={setAdd}/>
             </div>
           ) : (
             <div className=""></div>

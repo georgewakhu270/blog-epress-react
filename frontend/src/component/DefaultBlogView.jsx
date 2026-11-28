@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import { FaArrowRight } from "react-icons/fa";
 
-const DefaultBlogView = function ({blogs, setAdd}) {
+const DefaultBlogView = function ({
+  blogs, setAdd, setItemRead
+}) {
   const [itemBlogs, setItemBlogs] = useState(blogs);
   const [category, setCategory] = useState([]);
 
@@ -17,6 +19,11 @@ const DefaultBlogView = function ({blogs, setAdd}) {
     },
     [blogs],
   );
+
+  const readBlog = function(item){
+    setAdd("read")
+    setItemRead(item)
+  }
 
   return (
     <div className="bg-gray-50">
@@ -93,7 +100,7 @@ const DefaultBlogView = function ({blogs, setAdd}) {
                               </div>
                               <button 
                                 className="flex text-gray-500"
-                                onClick={()=>setAdd("read")}
+                                onClick={()=>readBlog(itemb)}
                                 >
                                   <span className="">Read</span>
                                   <div className="p-1">

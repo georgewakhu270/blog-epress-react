@@ -1,1 +1,6 @@
 @import "tailwindcss";
+
+.uppercase {
+  text-transform: uppercase;
+}
+

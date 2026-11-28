@@ -35,25 +35,31 @@ const Author = function ({
   return (
     <>
       <div className="">
-        <div className="flex p-1">
-          {add !== "add blog" ? (
-            <button
-              className="flex border-[1.7px] px-1 rounded-full border-gray-400 text-gray-500 mx-2 text-sm"
-              onClick={() => setAdd("add blog")}
-            >
-              <VscAdd size={27} className="p-2" />
-              <span className="p-1">New Blog</span>
-            </button>
-          ) : (
-            <></>
-          )}
-          <div className="border-l-2 border-gray-400 flex">
-            <img
-              alt={user.name}
-              className="h-[30px] object-cover mx-2 mt-1 border-2 border-yellow-200 rounded-full w-[30px] "
-              src={user.img}
-            />
-            <p className="text-gray-500">{user.name}</p>
+        <div className="flex justify-between sm:px-20 sm:py-2">
+          <div className=""></div>
+          <div className="flex p-1">
+            {add !== "add blog" ? (
+              <button
+                className="flex border-[1.7px] px-1 py-1 rounded-full bg-yellow-500 border-yellow-600 text-[beige] font-bold mx-2 text-sm"
+                onClick={() => setAdd("add blog")}
+              >
+                <VscAdd size={27} className="p-1 font-700" />
+                <span className="p-1">New Blog</span>
+              </button>
+            ) : (
+              <></>
+            )}
+            <div className="border-l-2 border-gray-400 flex">
+              <img
+                alt={user.name}
+                className="h-[38px] object-cover mx-2 mt-1 border-2 border-yellow-200 rounded-full w-[38px] "
+                src={user.img}
+              />
+              <div className="p-1">
+                <p className="text-black text-xs uppercase font-bold">{user.name}</p>
+                <p className="text-gray-400 text-xs uppercase">{user.role}</p>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -71,7 +77,7 @@ const Author = function ({
                 setIndex={setIndex}
               />
             </div>
-          ) : (
+          ) : add === "default" ? (
             <div className="bg-gray-50">
               <div className="sm:px-20">
                 {blogs.length > 0 ? (
@@ -89,17 +95,17 @@ const Author = function ({
                       {itemBlogs.map((itemb, x) => (
                         <div
                           className={`rounded-lg shadow-lg flex flex-col bg-white
-                            ${ x === 0
+                            ${x === 0
                               ? "sm:flex-row w-full h-[475px]"
                               : "w-full sm:w-[calc(33.33%-0.67rem)]"
-                          }`}
+                            }`}
                           key={x}>
                           <div
                             className={`w-full relative overflow-hidden
                               ${x === 0
-                              ? "rounded-t-lg sm:rounded-l-lg sm:rounded-tr-none w-full sm:w-3/5"
-                              : "rounded-t-lg w-full"
-                            }`}>
+                                ? "rounded-t-lg sm:rounded-l-lg sm:rounded-tr-none w-full sm:w-3/5"
+                                : "rounded-t-lg w-full"
+                              }`}>
                             <div className="absolute top-2 left-2 z-10 px-2 py-0.5 bg-white font-bold w-fit whitespace-nowrap rounded-full text-[12px] text-gray-900 shadow">
                               {itemb.category}
                             </div>
@@ -107,17 +113,17 @@ const Author = function ({
                               src={itemb.img}
                               alt={itemb.title}
                               className={`w-full h-full object-cover 
-                                ${x=== 0 
+                                ${x === 0
                                   ? ""
                                   : "sm:h-[250px]"
-                              }`}/>
+                                }`} />
                           </div>
 
                           <div
                             className={`w-full p-2 w-full sm:p-10 flex flex-col flex-1
                                 ${x === 0
-                                  ? "sm:w-2/5"
-                                  : "min-h-[300px]"
+                                ? "sm:w-2/5"
+                                : "min-h-[300px]"
                               }`}>
                             <h1 className="text-black text-[25px] font-bold">
                               {itemb.title}
@@ -129,10 +135,13 @@ const Author = function ({
                                   <img
                                     src={user.img}
                                     alt=""
-                                    className="rounded-full h-15 object-cover w-15 border-2 border-yellow-200"
+                                    className="rounded-full h-[40px] object-cover w-[40px] border-2 border-yellow-200"
                                   />
                                 </div>
-                                <div className="flex"></div>
+                                <div className="p-1">
+                                  <p className="text-black text-xs uppercase font-bold">{user.name}</p>
+                                  <p className="text-gray-400 text-xs uppercase">{user.role}</p>
+                                </div>
                               </div>
                               <button className="flex text-gray-500">
                                 <span className="">Read</span>
@@ -153,6 +162,10 @@ const Author = function ({
                 )}
               </div>
             </div>
+          ) : add === "read" ? (
+            <div className="" ></div>
+          ) : (
+            <div className=""></div>
           )}
         </div>
       </div>

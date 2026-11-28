@@ -3,6 +3,7 @@ import motherboard from "../assets/motherboard.avif";
 import kyoto from "../assets/kyoto.avif";
 import culture from "../assets/culture.avif";
 import kim from "../assets/kim philby.jpg";
+import { defaultAuthor } from "./data";
 
 export const blogList = [
   {
@@ -14,6 +15,7 @@ export const blogList = [
     content:
       "<p>For the better of a decade, the web optimized almost exclusively for velocity. Feeds became endless, headlines grew louder, and the quiet dignity of a well-set page was traded for engagement loops.</p>",
     img: computer,
+    user: defaultAuthor,
   },
   {
     id: 1,
@@ -24,6 +26,7 @@ export const blogList = [
     content:
       "<p>For the better of a decade, the web optimized almost exclusively for velocity. Feeds became endless, headlines grew louder, and the quiet dignity of a well-set page was traded for engagement loops.</p>",
     img: motherboard,
+    user: defaultAuthor,
   },
   {
     id: 2,
@@ -34,6 +37,7 @@ export const blogList = [
     content:
       "<p>For the better of a decade, the web optimized almost exclusively for velocity. Feeds became endless, headlines grew louder, and the quiet dignity of a well-set page was traded for engagement loops.</p>",
     img: kyoto,
+    user: defaultAuthor,
   },
   {
     id: 3,
@@ -44,6 +48,7 @@ export const blogList = [
     content:
       "<p>For the better of a decade, the web optimized almost exclusively for velocity. Feeds became endless, headlines grew louder, and the quiet dignity of a well-set page was traded for engagement loops.</p>",
     img: culture,
+    user: defaultAuthor,
   },
   {
     id: 4,
@@ -53,5 +58,6 @@ export const blogList = [
     content:
       "<p>For the better of a decade, the web optimized almost exclusively for velocity. Feeds became endless, headlines grew louder, and the quiet dignity of a well-set page was traded for engagement loops.</p>",
     img: kim,
+    user: defaultAuthor,
   },
 ];

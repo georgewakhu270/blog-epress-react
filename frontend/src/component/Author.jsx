@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { VscAdd } from "react-icons/vsc";
-import { FaArrowRight } from "react-icons/fa";
 
 import New from "./New";
 import Read from "./Read";
+import DefaultBlogView from "./DefaultBlogView";
 
 const Author = function ({
   setBlogs,
@@ -16,22 +16,8 @@ const Author = function ({
   setUser,
 }) {
   const [add, setAdd] = useState("default");
-  const [category, setCategory] = useState([]);
   const [itemBlogs, setItemBlogs] = useState(blogs);
   const [itemList, setItemList] = useState("default");
-
-  useEffect(
-    function () {
-      let itemCateg = new Set();
-      blogs.forEach((blog) => {
-        if (blog?.category) {
-          itemCateg.add(blog.category);
-        }
-      });
-      setCategory([...itemCateg]);
-    },
-    [blogs],
-  );
 
   return (
     <>
@@ -79,92 +65,7 @@ const Author = function ({
               />
             </div>
           ) : add === "default" ? (
-            <div className="bg-gray-50">
-              <div className="sm:px-20">
-                {blogs.length > 0 ? (
-                  <div className="p-2">
-                    <div className="flex p-1">
-                      <button className="">all</button>
-                      {Array.isArray(category) &&
-                        category.map((categ, x) => (
-                          <button type="button" className="" key={categ ?? x}>
-                            {categ}
-                          </button>
-                        ))}
-                    </div>
-                    <div className="p-1 w-full flex flex-wrap gap-4">
-                      {itemBlogs.map((itemb, x) => (
-                        <div
-                          className={`rounded-lg shadow-lg flex flex-col bg-white
-                            ${x === 0
-                              ? "sm:flex-row w-full h-[475px]"
-                              : "w-full sm:w-[calc(33.33%-0.67rem)]"
-                            }`}
-                          key={x}>
-                          <div
-                            className={`w-full relative overflow-hidden
-                              ${x === 0
-                                ? "rounded-t-lg sm:rounded-l-lg sm:rounded-tr-none w-full sm:w-3/5"
-                                : "rounded-t-lg w-full"
-                              }`}>
-                            <div className="absolute top-2 left-2 z-10 px-2 py-0.5 bg-white font-bold w-fit whitespace-nowrap rounded-full text-[12px] text-gray-900 shadow">
-                              {itemb.category}
-                            </div>
-                            <img
-                              src={itemb.img}
-                              alt={itemb.title}
-                              className={`w-full h-full object-cover 
-                                ${x === 0
-                                  ? ""
-                                  : "sm:h-[250px]"
-                                }`} />
-                          </div>
-
-                          <div
-                            className={`w-full p-2 w-full sm:p-10 flex flex-col flex-1
-                                ${x === 0
-                                ? "sm:w-2/5"
-                                : "min-h-[300px]"
-                              }`}>
-                            <h1 className="text-black text-[25px] font-bold">
-                              {itemb.title}
-                            </h1>
-                            <p className="text-gray-500 pb-5">{itemb.excerpt}</p>
-                            <div className="mt-auto flex justify-between border-t-2 border-yellow-100 pt-3">
-                              <div className="flex">
-                                <div className="">
-                                  <img
-                                    src={user.img}
-                                    alt=""
-                                    className="rounded-full h-[40px] object-cover w-[40px] border-2 border-yellow-200"
-                                  />
-                                </div>
-                                <div className="p-1">
-                                  <p className="text-black text-xs uppercase font-bold">{user.name}</p>
-                                  <p className="text-gray-400 text-xs uppercase">{user.role}</p>
-                                </div>
-                              </div>
-                              <button 
-                                onClick={()=>setAdd("read")}
-                                className="flex text-gray-500">
-                                <span className="">Read</span>
-                                <div className="p-1">
-                                  <FaArrowRight />
-                                </div>
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                ) : (
-                  <div className="flex p-2 justify-center items-center bg-gray-100 min-h-[50vh]">
-                    <h1 className="">You have no blogs</h1>
-                  </div>
-                )}
-              </div>
-            </div>
+            <DefaultBlogView blogs={blogs} setAdd={setAdd}/>
           ) : add === "read" ? (
             <div className="" >
               <Read/>

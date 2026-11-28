@@ -6,8 +6,6 @@ import { FaXTwitter, FaLinkedin, FaRegCopyright } from "react-icons/fa6";
 import { defaultAuthor, tagList } from "./data/data.js";
 import { blogList } from "./data/blog.js";
 
-import DOMPurify from "dompurify";
-
 import Dashboard from "./Dashboard";
 
 export default function App() {
@@ -17,13 +15,6 @@ export default function App() {
   const [index, setIndex] = useState(1);
   const [user, setUser] = useState(defaultAuthor);
   const [blogs, setBlogs] = useState(blogList);
-
-  //   id: 1,
-  //   content: "<h1>Who is Kim Philby</h1><p>This was  British intelligence officer who sold out his nation.</p>",
-  //   title: "This is Kim Philby",
-  //   category: "history",
-  //   excerpt: "Who is regarded as the biggest British traitor in recent British intelligence history.",
-  //   user: user
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -84,8 +75,6 @@ export default function App() {
           </p>
         </div>
       </footer>
-
-      {/* <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(txt) }} /> */}
     </div>
   );
 }

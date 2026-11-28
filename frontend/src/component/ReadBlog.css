@@ -2,3 +2,15 @@
   font-weight: 700;
   text-transform: uppercase;
 }
+
+.content-div p {  
+  font-size: 1.1rem;
+  text-align: justify;
+}
+
+.content-div h1,.content-div h2, .content-div h3, .content-div h4, .content-div .h5  {
+  color: black;
+  font-weight: 700;
+  font-size: 1.5rem;
+  padding: 1.04rem 0;
+}

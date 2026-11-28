@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { VscAdd } from "react-icons/vsc";
 
 import New from "./New";
@@ -20,6 +20,15 @@ const Author = function ({
   const [itemBlogs, setItemBlogs] = useState(blogs);
   const [itemList, setItemList] = useState("default");
   const [itemRead, setItemRead] = useState();
+  const [statusMsg, setStatusMsg] = useState("")
+
+  useEffect(function(){
+    if(!statusMsg) return;
+    const timerId = setTimeout(()=>{
+      setStatusMsg("")
+    }, 3000)
+    return () => clearTimeout(timerId);
+  },[statusMsg])
 
   return (
     <>
@@ -64,6 +73,7 @@ const Author = function ({
                 setAdd={setAdd}
                 user={user}
                 setIndex={setIndex}
+                setStatusMsg={setStatusMsg}
               />
             </div>
           ) : add === "default" ? (
@@ -91,6 +101,15 @@ const Author = function ({
             <div className=""></div>
           )}
         </div>
+        {/* the messages */}
+        {statusMsg &&(
+          <div 
+          role="status" 
+          aria-live="polite" 
+          className="fixed top-4 right-4 z-50 rounded-md bg-green-600/50 px-4 py-2 text-sm font-medium text-white shadow-lg">
+          {statusMsg}
+        </div>
+        )}
       </div>
     </>
   );

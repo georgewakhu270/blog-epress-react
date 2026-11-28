@@ -14,7 +14,8 @@ export default function New({
   tags,
   setTags,
   setAdd,
-  user,
+  user, 
+  setStatusMsg
 }) {
   const editor = useCreateBlockNote();
 
@@ -68,6 +69,7 @@ export default function New({
       },
     ]);
     setAdd("default");
+    setStatusMsg(`Successfully saved: ${title}`)
   };
 
   return (
